@@ -1,0 +1,14 @@
+// This is returning the variable counted, which tells us how many times a character appears in text.
+
+function countChar(string, character) {
+  var counted = 0;
+  for (var i = 0; i < string.length; i++)
+    if (string.charAt(i) === character)
+      counted += 1;
+  return counted;
+}
+
+
+function countBs(string) {
+  return countChar(string, "B");
+}
