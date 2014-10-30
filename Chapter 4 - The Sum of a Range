@@ -1,0 +1,21 @@
+function range (start, end, step) {               //created 3 inputs
+  if (step == null) step = 1;                     //default step set to 1
+  var array = [];
+  
+  if (step > 0) {                                 //if step > 0, keep pushing i to front of array until i equals our "end"
+    for (var i = start; i <= end; i += step)
+      array.push(i);
+    } else {
+      for (var i = start; i >= end; i += step)    //if step is negative, keep pushing i to front of array until i equals our end
+        array.push(i);
+    }
+    return array;                                 //return our array now
+}
+
+
+function sum(array) {                             //A function that adds all the values in an array.
+  var total = 0;
+  for (var i = 0; i < array.length; i++)
+    total += array[i];
+  return total;
+}
