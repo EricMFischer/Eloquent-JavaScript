@@ -1,0 +1,29 @@
+// This function deepEqual takes two values and returns true only if
+// they are the same value, or are objects with the same properties whose
+// values are also equal when compared with a recusive call to deepEqual.
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+  
+  if (a == null || typeof a != "object" ||   // covers all the scenarios
+      b == null || typeof b != "object")     // in which a would not equal b
+    return false;
+  
+  var propsInA = 0, propsInB = 0;
+
+  for (var prop in a)     // We're counting a's properties. Remember, to
+    propsInA += 1;        // return true for objects a and b, they need 
+                          // to have the same number of properties.
+  for (var prop in b) {
+    propsInB += 1;
+    if (!(prop in a) || !deepEqual(a[prop], b[prop]))  // Various values of the
+      return false;                                    // properties of a and b are
+  }                                                    // compared by a recursive
+                                                       // call to deepEqual.
+  return propsInA == propsInB;
+}
+
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
