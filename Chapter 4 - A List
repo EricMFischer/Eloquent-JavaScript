@@ -1,0 +1,41 @@
+// I wrote arrayToList to build a data structure, in which objects are forming a chain.
+// Starting from the last place in the array, we "ladder up", constantly giving the
+// array value and placing the rest of the list in the list variable.
+
+function arrayToList(array) {
+  var list = null;
+  for (var i = array.length - 1; i >= 0; i--)
+    list = {value: array[i], rest: list};
+  return list;
+}
+
+// I wrote listToArray to produce an array from a list. The array starts empty. But
+// every iteration of the loop, node points to the current sublist, and the body can
+// read its value property to get the current element. At the end of an iteration, node
+// moves to the next sublist.
+
+function listToArray(list) {
+  var array = [];
+  for (var node = list; node; node = node.rest)
+    array.push(node.value);
+  return array;
+}
+
+// This is kind of like what I did with arrayToList. The helper function prepend
+// takes a value and a list and adds the value to the front of the input list.
+
+function prepend(value, list) {
+  return {value: value, rest: list};
+}
+
+// The helper function nth takes a list and a number and returns the value at the
+// given position in the list, or undefined when there's no such value.
+
+function nth(list, n) {
+  if (!list)
+    return undefined;
+  else if (n == 0)
+    return list.value;
+  else
+    return nth(list.rest, n - 1);
+}
