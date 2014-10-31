@@ -11,10 +11,10 @@ function deepEqual(a, b) {
   
   var propsInA = 0, propsInB = 0;
 
-  for (var prop in a)     // We're counting a's properties. Remember, to
-    propsInA += 1;        // return true for objects a and b, they need 
-                          // to have the same number of properties.
-  for (var prop in b) {
+  for (var prop in a)          // We're counting a's properties. Remember, to
+    propsInA += 1;             // return true for objects a and b, they need 
+                               // to have the same number of properties.
+  for (var prop in b) {  
     propsInB += 1;
     if (!(prop in a) || !deepEqual(a[prop], b[prop]))  // Various values of the
       return false;                                    // properties of a and b are
@@ -23,7 +23,11 @@ function deepEqual(a, b) {
   return propsInA == propsInB;
 }
 
+
 var obj = {here: {is: "an"}, object: 2};
 console.log(deepEqual(obj, obj));
 // → true
 console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
