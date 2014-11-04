@@ -12,7 +12,7 @@ function reverseArray(array) {
 //given as argument in order to reverse its elements.
 
 function reverseArrayInPlace(array) {
-  for (var i = 0; i < Math.floor(array.length / 2); i++) {
+  for (var i = 0; i < Math.floor(array.length / 2); i++) {            // Math.floor rounds down
     var old = array[i];
     array[i] = array[array.length - 1 - i];
     array[array.length - 1 - i] = old;
