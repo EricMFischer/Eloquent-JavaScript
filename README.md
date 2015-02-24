@@ -1,3 +1,3 @@
 # Eloquent JavaScript
 
-As I peruse this excellent book for JavaScript, I'll post solutions to the problems. I have explanations for the problems as well.
+This is an excellent resource for learning JavaScript, and I've posted my solutions and explanations for the problems.
