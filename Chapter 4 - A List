@@ -3,28 +3,31 @@
 // it displays: {the value at the current position i, the rest of the list}.
 
 function arrayToList(array) {
-  var list = null;
-  for (var i = array.length - 1; i >= 0; i--)
-    list = {value: array[i], rest: list};
-  return list;
-} 
+    var list = null;
+    for (var i=array.length-1; i>=0; i--) {
+        list = {value: array[i], rest: list};
+    }
+    return list;
+}
+arrayToList([1,2,3]);
 
 // The function listToArray takes a list as input, creates an empty array,
 // and starting from the front of the list, the array is chcanged each time so that
 // it has the value at i added to the end of it. This happens for the length of the list.
 
-function listToArray (list) {
-  var array = [];
-  for (var i = list; i; i = i.rest)
-    array.push(i.value);
-  return array;
+function listToArray(list) {
+    var array = [];
+    for (var i=list; i; i=i.rest) {
+        array.push(i.value);
+    }
+    return array;
 }
 
 // This function is similar to arrayToList. The helper function prepend
 // takes a value and a list and returns the value to the front of the list.
 
-function prepend(value, list) {
-  return {value: value, rest: list}
+function prepend(element, list) {
+    return {value: element, rest: list};
 }
 
 // The helper function nth takes a list and a number and returns the element at the
@@ -32,13 +35,10 @@ function prepend(value, list) {
 // It is recursive; it keeps repeating until n == 0, the point at which we find
 // our nth value. This value is then returned.
 
-function nth(list, n) {
-  if (!list)
-    return undefined;
-  else if (n == 0)
-    return list.value;
-  else
-    return nth(list.rest, n-1);
+function nth(list, number) {
+    if (!list) {return undefined;}
+    else if (number === 0) {return list.value;}
+    else {return nth(list.rest, number-1);}
 }
 
 console.log(arrayToList([10, 20]));
