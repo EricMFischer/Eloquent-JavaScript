@@ -1,0 +1,59 @@
+// forEach function
+
+var forEach = function(array, action) {
+  for (var i=0; i < array.length; i++) {
+    action(array[i]);
+  }
+}
+
+function greaterThan(n) {
+  return function(m) { return m>n; };
+}
+var x = greaterThan(10)
+
+console.log(x(11));
+
+
+// filter function
+
+function filter(array, test) {
+  var newArr = [];
+  for (var i=0; i < array.length; i++) {
+    if (test(array[i])) {
+      newArr.push(array[i]);
+    }
+  }
+  return newArr;
+}
+
+// map function (pure version of forEach)
+
+function map(array, action) {
+  var newArr = [];
+  for (var i=0; i < array.length; i++) {
+    newArr.push(action(array[i]));
+  }
+  return newArr;
+}
+
+
+// reduce function
+
+function reduce(array, combine, start) {
+  var current = start;
+  for (var i=0; i < array.length; i++) {
+    current = combine(current, array[i]);
+  }
+  return current;
+}
+
+console.log(reduce([1,2,3,4], function(a,b) { return a+b; }));
+
+// average function
+
+function average(array) {
+  function plus(a, b) {return a+b;}
+  return array.reduce(plus) / array.length;
+}
+
+console.log(average(ancestry.filter(male).map(age)));
