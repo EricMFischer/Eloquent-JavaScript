@@ -57,3 +57,57 @@ function average(array) {
 }
 
 console.log(average(ancestry.filter(male).map(age)));
+
+
+
+
+
+
+
+
+
+
+
+// Friday, March 27th
+function forEach(array, action) {
+  for (var i=0; i<array.length; i++) {
+    action(array[i]);
+  }
+};
+
+forEach([1,2,3,4], function(x) {x*2;});
+
+
+function filter(array, test) {
+  var newArr = [];
+  for (var i=0; i<array.length; i++) {
+    if (test(array[i])) {
+      newArr.push(array[i]);
+    }
+  }
+  return newArr;
+};
+
+filter([1,2,3,4], function(x) {
+  return x > 2;
+});
+
+
+function map(array, action) {
+  var newArr = [];
+  for (var i=0; i<array.length; i++) {
+    newArr.push(action(array[i]));
+  }
+  return newArr;
+};
+
+map([1,2,3,4], function(x) {return x*2;});
+
+
+function reduce (array, combine, start) {
+  var current = start;
+  for (var i=0; i<array.length; i++) {
+    current = combine(current, array[i]);
+  }
+  return current;
+}
